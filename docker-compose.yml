@@ -5,9 +5,17 @@ services:
     image: prom/prometheus:v2.0.0
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/alert.rules:/etc/prometheus/alert.rules
       - prom-tsdb:/prometheus
     ports:
       - "9090:9090"
+
+  alertmanager:
+    image: prom/alertmanager:v0.12.0
+    volumes:
+      - ./config/alertmanager.yml:/etc/alertmanager/config.yml
+      - alertmanager:/alertmanager
+
 
   blackbox-exporter:
     image: prom/blackbox-exporter:v0.11.0
@@ -16,3 +24,4 @@ services:
 
 volumes:
   prom-tsdb:
+  alertmanager:

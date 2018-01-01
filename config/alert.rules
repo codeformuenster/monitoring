@@ -1,0 +1,12 @@
+groups:
+- name: websites-reachable
+  rules:
+
+  # Alert for any instance that is unreachable for >5 minutes.
+  - alert: WebsiteDown
+    expr: probe_success == 0
+    for: 5m
+    labels:
+      severity: page
+    annotations:
+      summary: "Website {{ $labels.instance }} is down!"
