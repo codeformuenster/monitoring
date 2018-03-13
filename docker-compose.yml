@@ -9,18 +9,21 @@ services:
       - prom-tsdb:/prometheus
     ports:
       - "9090:9090"
+    restart: always
 
   alertmanager:
     image: prom/alertmanager:v0.12.0
     volumes:
       - ./config/alertmanager.yml:/etc/alertmanager/config.yml
       - alertmanager:/alertmanager
+    restart: always
 
 
   blackbox-exporter:
     image: prom/blackbox-exporter:v0.11.0
     cap_add:
       - NET_RAW
+    restart: always
 
 volumes:
   prom-tsdb:
