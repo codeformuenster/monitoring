@@ -37,6 +37,9 @@ scrape_configs:
       - targets:
         - http://codeformuenster.org
         - https://mein-ms.de
+        - https://www.mein-ms.de
+        - https://elasticsearch.codeformuenster.org
+        - https://traffics.codeformuenster.org
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
