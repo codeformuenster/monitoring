@@ -12,7 +12,7 @@ services:
     restart: always
 
   alertmanager:
-    image: prom/alertmanager:v0.12.0
+    image: prom/alertmanager:v0.14.0
     volumes:
       - ./config/alertmanager.yml:/etc/alertmanager/config.yml
       - alertmanager:/alertmanager
@@ -20,7 +20,7 @@ services:
 
 
   blackbox-exporter:
-    image: prom/blackbox-exporter:v0.11.0
+    image: prom/blackbox-exporter:v0.12.0
     cap_add:
       - NET_RAW
     restart: always
