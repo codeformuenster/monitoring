@@ -8,4 +8,8 @@ receivers:
         username: 'Monitoring'
         channel: ''
         api_url: ''
-        text: '{{ .CommonAnnotations.summary }}'
+        title: '{{ template "custom_title" . }}'
+        text: '{{ template "custom_slack_message" . }}'
+
+templates:
+  - /alertmanager/notifications.tmpl

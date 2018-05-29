@@ -6,6 +6,7 @@ services:
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
       - ./config/alert.rules:/etc/prometheus/alert.rules
+      - ./config/ssl_expiry.rules:/etc/prometheus/ssl_expiry.rules
       - prom-tsdb:/prometheus
     ports:
       - "9090:9090"
@@ -15,6 +16,7 @@ services:
     image: prom/alertmanager:v0.14.0
     volumes:
       - ./config/alertmanager.yml:/etc/alertmanager/config.yml
+      - ./config/notifications.tmpl:/alertmanager/notifications.tmpl
       - alertmanager:/alertmanager
     restart: always
 

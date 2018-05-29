@@ -8,6 +8,7 @@ global:
 
 rule_files:
   - 'alert.rules'
+  - 'ssl_expiry.rules'
 
 alerting:
   alertmanagers:
@@ -39,6 +40,7 @@ scrape_configs:
         - https://mein-ms.de
         - https://www.mein-ms.de
         - https://elasticsearch.codeformuenster.org
+        - https://elasticsearch.codeformuenster.org/_search
         - https://traffics.codeformuenster.org
     relabel_configs:
       - source_labels: [__address__]
